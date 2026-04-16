@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Norivo – KI-Agentur für kleine & mittlere Unternehmen</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0f1f3d;
+  --navy-mid: #1a3260;
+  --teal: #00b894;
+  --teal-dark: #009976;
+  --teal-light: #e6f8f4;
+  --white: #ffffff;
+  --bg: #f7f8fc;
+  --text: #0f1f3d;
+  --text-mid: #4a5568;
+  --text-light: #8896a8;
+  --border: rgba(15,31,61,0.09);
+  --shadow: 0 4px 24px rgba(15,31,61,0.07);
+  --shadow-md: 0 8px 40px rgba(15,31,61,0.12);
+  --radius: 12px;
+  --radius-lg: 20px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--white);overflow-x:hidden;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 64px;height:72px;background:rgba(255,255,255,0.93);backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s;}
+nav.scrolled{border-color:var(--border);box-shadow:var(--shadow);}
+.nav-logo{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:700;color:var(--navy);cursor:pointer;letter-spacing:-.5px;}
+.nav-logo span{color:var(--teal);}
+.nav-links{display:flex;gap:36px;list-style:none;}
+.nav-links a{font-size:.88rem;font-weight:500;color:var(--text-mid);cursor:pointer;transition:color .2s;}
+.nav-links a:hover{color:var(--navy);}
+.nav-cta{background:var(--navy);color:var(--white)!important;padding:10px 22px;border-radius:100px;font-size:.85rem!important;font-weight:600!important;transition:background .2s!important;}
+.nav-cta:hover{background:var(--teal)!important;}
+
+.page{display:none;}.page.active{display:block;}
+
+.hero{min-height:100vh;padding:140px 64px 100px;background:var(--white);position:relative;overflow:hidden;display:flex;align-items:center;}
+.hero-bg{position:absolute;right:-80px;top:50%;transform:translateY(-50%);width:580px;height:580px;border-radius:50%;background:radial-gradient(circle,rgba(0,184,148,.10) 0%,transparent 70%);pointer-events:none;}
+.hero-dots{position:absolute;right:60px;top:120px;width:280px;height:280px;opacity:.3;background-image:radial-gradient(circle,var(--navy) 1.5px,transparent 1.5px);background-size:26px 26px;mask-image:radial-gradient(circle,black 40%,transparent 70%);}
+.hero-inner{max-width:680px;position:relative;z-index:1;animation:fadeUp .8s .1s both;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--teal-light);color:var(--teal-dark);padding:7px 18px;border-radius:100px;font-size:.78rem;font-weight:600;letter-spacing:.4px;margin-bottom:32px;text-transform:uppercase;}
+.hero-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--teal);flex-shrink:0;box-shadow:0 0 0 3px rgba(0,184,148,.25);}
+.hero-title{font-family:'Fraunces',serif;font-size:clamp(2.8rem,5vw,4.2rem);font-weight:700;line-height:1.1;color:var(--navy);margin-bottom:24px;letter-spacing:-1.5px;}
+.hero-title em{font-style:italic;color:var(--teal);}
+.hero-desc{font-size:1.05rem;color:var(--text-mid);line-height:1.7;max-width:520px;margin-bottom:44px;font-weight:300;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-primary{background:var(--navy);color:var(--white);padding:14px 30px;border-radius:100px;border:none;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:600;cursor:pointer;transition:background .2s,transform .15s;}
+.btn-primary:hover{background:var(--teal);transform:translateY(-1px);}
+.btn-outline{background:transparent;color:var(--navy);padding:14px 30px;border-radius:100px;border:1.5px solid var(--border);font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:500;cursor:pointer;transition:border-color .2s;}
+.btn-outline:hover{border-color:var(--navy);}
+.hero-stats{display:flex;gap:48px;margin-top:64px;padding-top:48px;border-top:1px solid var(--border);animation:fadeUp .8s .35s both;}
+.stat-num{font-family:'Fraunces',serif;font-size:2.2rem;font-weight:700;color:var(--navy);letter-spacing:-1px;}
+.stat-num span{color:var(--teal);}
+.stat-label{font-size:.8rem;color:var(--text-light);margin-top:2px;}
+
+section{padding:100px 64px;}
+.section-tag{display:inline-flex;align-items:center;gap:10px;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal-dark);margin-bottom:20px;}
+.section-tag::before{content:'';width:24px;height:2px;background:var(--teal);border-radius:2px;}
+.section-title{font-family:'Fraunces',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:700;color:var(--navy);line-height:1.15;letter-spacing:-1px;margin-bottom:16px;}
+.section-title em{font-style:italic;color:var(--teal);}
+.section-sub{font-size:1rem;color:var(--text-mid);max-width:560px;line-height:1.7;font-weight:300;margin-bottom:56px;}
+
+.leistungen-teaser{background:var(--bg);}
+.lteaser-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-bottom:40px;}
+.lteaser-card{background:var(--white);border-radius:var(--radius-lg);padding:32px 28px;border:1px solid var(--border);transition:box-shadow .25s,transform .25s;cursor:pointer;}
+.lteaser-card:hover{box-shadow:var(--shadow-md);transform:translateY(-3px);}
+.lteaser-icon{width:52px;height:52px;border-radius:14px;background:var(--teal-light);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:20px;}
+.lteaser-title{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:600;color:var(--navy);margin-bottom:8px;}
+.lteaser-desc{font-size:.85rem;color:var(--text-mid);line-height:1.6;font-weight:300;}
+.lteaser-price{margin-top:16px;font-size:.85rem;font-weight:700;color:var(--teal-dark);}
+
+.leistung-block{margin-bottom:80px;}
+.leistung-block:last-child{margin-bottom:0;}
+.leistung-block-header{display:flex;align-items:center;gap:18px;margin-bottom:32px;}
+.leistung-block-icon{width:60px;height:60px;border-radius:16px;background:var(--teal-light);display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0;}
+.leistung-block-title{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:700;color:var(--navy);}
+.leistung-block-sub{font-size:.9rem;color:var(--text-mid);margin-top:4px;}
+
+.preise-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.preise-grid-2{grid-template-columns:repeat(2,1fr);}
+.preis-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px 28px;transition:box-shadow .25s,transform .2s;position:relative;}
+.preis-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);}
+.preis-card.featured{background:var(--navy);border-color:var(--navy);}
+.preis-badge{position:absolute;top:-12px;left:28px;background:var(--teal);color:var(--white);font-size:.7rem;font-weight:700;letter-spacing:.5px;padding:4px 14px;border-radius:100px;text-transform:uppercase;}
+.preis-name{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:600;color:var(--navy);margin-bottom:6px;}
+.preis-card.featured .preis-name{color:var(--white);}
+.preis-einmalig{font-size:2rem;font-weight:700;color:var(--navy);font-family:'Fraunces',serif;line-height:1;margin:16px 0 4px;letter-spacing:-1px;}
+.preis-card.featured .preis-einmalig{color:var(--white);}
+.preis-monthly{font-size:.82rem;color:var(--text-light);margin-bottom:20px;}
+.preis-card.featured .preis-monthly{color:rgba(255,255,255,.6);}
+.preis-features{list-style:none;margin-bottom:24px;display:flex;flex-direction:column;gap:10px;}
+.preis-features li{font-size:.85rem;color:var(--text-mid);display:flex;align-items:flex-start;gap:10px;line-height:1.5;}
+.preis-card.featured .preis-features li{color:rgba(255,255,255,.8);}
+.preis-features li::before{content:'✓';color:var(--teal);font-weight:700;flex-shrink:0;}
+.btn-anfragen{width:100%;padding:12px;border-radius:100px;border:1.5px solid var(--border);background:transparent;color:var(--navy);font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s;}
+.btn-anfragen:hover{background:var(--navy);color:var(--white);border-color:var(--navy);}
+.btn-anfragen-featured{background:var(--teal);color:var(--white);border-color:var(--teal);}
+.btn-anfragen-featured:hover{background:var(--teal-dark);border-color:var(--teal-dark);}
+
+.ueber-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.ueber-photo{aspect-ratio:4/5;border-radius:var(--radius-lg);background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 60%,var(--teal-dark) 100%);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:4rem;color:var(--white);position:relative;overflow:hidden;}
+.ueber-photo::after{content:'';position:absolute;bottom:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:rgba(0,184,148,.2);}
+.ueber-text{display:flex;flex-direction:column;gap:20px;}
+.ueber-text p{font-size:1rem;color:var(--text-mid);line-height:1.8;font-weight:300;}
+.ueber-quote{padding:24px 28px;background:var(--teal-light);border-left:3px solid var(--teal);border-radius:0 var(--radius) var(--radius) 0;font-family:'Fraunces',serif;font-size:1.1rem;font-style:italic;color:var(--navy);line-height:1.6;}
+.ueber-punkte{display:flex;flex-direction:column;gap:12px;}
+.ueber-punkt{display:flex;gap:12px;align-items:flex-start;font-size:.9rem;color:var(--text-mid);line-height:1.5;}
+.ueber-punkt::before{content:'→';color:var(--teal);font-weight:700;flex-shrink:0;}
+
+.ref-bg{background:var(--bg);}
+.ref-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+.ref-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:36px 32px;transition:box-shadow .2s;}
+.ref-card:hover{box-shadow:var(--shadow-md);}
+.ref-tag{display:inline-block;background:var(--teal-light);color:var(--teal-dark);font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:4px 12px;border-radius:100px;margin-bottom:16px;}
+.ref-title{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:600;color:var(--navy);margin-bottom:12px;}
+.ref-desc{font-size:.88rem;color:var(--text-mid);line-height:1.7;font-weight:300;}
+.ref-leistung{margin-top:20px;font-size:.8rem;font-weight:600;color:var(--text-light);text-transform:uppercase;letter-spacing:.5px;}
+
+.kontakt-bg{background:var(--bg);}
+.kontakt-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:64px;align-items:start;}
+.kontakt-items{display:flex;flex-direction:column;gap:12px;margin-top:8px;}
+.kontakt-item{display:flex;gap:14px;align-items:flex-start;background:var(--white);border-radius:var(--radius);padding:16px 20px;border:1px solid var(--border);}
+.kontakt-icon{width:38px;height:38px;border-radius:10px;background:var(--teal-light);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.kontakt-item h4{font-size:.82rem;font-weight:700;color:var(--navy);margin-bottom:2px;}
+.kontakt-item p{font-size:.82rem;color:var(--text-mid);}
+.kontakt-form{background:var(--white);border-radius:var(--radius-lg);padding:44px;border:1px solid var(--border);box-shadow:var(--shadow-md);}
+.form-title{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.form-sub{font-size:.88rem;color:var(--text-mid);margin-bottom:24px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-group{margin-bottom:16px;}
+.form-label{display:block;font-size:.78rem;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px;}
+.form-input{width:100%;padding:13px 16px;border:1.5px solid var(--border);border-radius:var(--radius);font-family:'DM Sans',sans-serif;font-size:.9rem;color:var(--text);background:var(--bg);transition:border-color .2s,background .2s;outline:none;}
+.form-input:focus{border-color:var(--teal);background:var(--white);}
+.form-input::placeholder{color:var(--text-light);}
+textarea.form-input{min-height:120px;resize:vertical;}
+select.form-input{cursor:pointer;}
+.form-submit{width:100%;padding:15px;background:var(--navy);color:var(--white);border:none;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:.92rem;font-weight:700;cursor:pointer;transition:background .2s,transform .15s;margin-top:8px;}
+.form-submit:hover{background:var(--teal);transform:translateY(-1px);}
+.preis-selected-info{background:var(--teal-light);border-radius:var(--radius);padding:12px 16px;margin-bottom:16px;font-size:.85rem;color:var(--teal-dark);font-weight:600;display:none;}
+.preis-selected-info.visible{display:block;}
+
+.cta-section{background:var(--navy);padding:100px 64px;text-align:center;}
+.cta-section .section-tag{justify-content:center;color:rgba(0,184,148,.9);}
+.cta-section .section-tag::before{background:rgba(0,184,148,.6);}
+.cta-title{font-family:'Fraunces',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:700;color:var(--white);letter-spacing:-1px;margin-bottom:16px;line-height:1.15;}
+.cta-title em{font-style:italic;color:var(--teal);}
+.cta-sub{font-size:1rem;color:rgba(255,255,255,.65);max-width:500px;margin:0 auto 40px;font-weight:300;line-height:1.7;}
+.btn-white{background:var(--white);color:var(--navy);padding:14px 32px;border-radius:100px;border:none;font-family:'DM Sans',sans-serif;font-size:.92rem;font-weight:700;cursor:pointer;transition:background .2s,transform .15s;}
+.btn-white:hover{background:var(--teal);color:var(--white);transform:translateY(-1px);}
+
+.impressum-content{max-width:700px;}
+.impressum-content h3{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin:32px 0 10px;}
+.impressum-content p{font-size:.9rem;color:var(--text-mid);line-height:1.7;margin-bottom:6px;}
+
+footer{background:var(--navy);padding:64px 64px 40px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;border-top:1px solid rgba(255,255,255,.06);}
+.footer-logo{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:700;color:var(--white);margin-bottom:12px;}
+.footer-logo span{color:var(--teal);}
+.footer-desc{font-size:.83rem;color:rgba(255,255,255,.45);line-height:1.7;max-width:280px;font-weight:300;}
+.footer-heading{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.4);margin-bottom:18px;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.footer-links a{font-size:.85rem;color:rgba(255,255,255,.65);cursor:pointer;transition:color .2s;}
+.footer-links a:hover{color:var(--teal);}
+.footer-bottom{background:var(--navy);padding:20px 64px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.06);font-size:.78rem;color:rgba(255,255,255,.3);}
+
+.toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--navy);color:var(--white);padding:14px 28px;border-radius:100px;font-size:.88rem;font-weight:500;opacity:0;transition:all .3s;z-index:999;pointer-events:none;box-shadow:var(--shadow-md);}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+@keyframes pageIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shimmer{0%{background-position:200% center}100%{background-position:-200% center}}
+
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .75s cubic-bezier(.22,1,.36,1),transform .75s cubic-bezier(.22,1,.36,1);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);}
+.reveal-left.visible{opacity:1;transform:translateX(0);}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);}
+.reveal-right.visible{opacity:1;transform:translateX(0);}
+.reveal-scale{opacity:0;transform:scale(0.94);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1);}
+.reveal-scale.visible{opacity:1;transform:scale(1);}
+.stagger-1{transition-delay:.06s!important;}
+.stagger-2{transition-delay:.14s!important;}
+.stagger-3{transition-delay:.22s!important;}
+.stagger-4{transition-delay:.30s!important;}
+
+.page.active{animation:pageIn .45s cubic-bezier(.22,1,.36,1);}
+.cta-section{position:relative;overflow:hidden;}
+.cta-section::before{content:'';position:absolute;top:-120px;left:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(0,184,148,.13) 0%,transparent 70%);animation:float 7s ease-in-out infinite;pointer-events:none;}
+.cta-section::after{content:'';position:absolute;bottom:-80px;right:-80px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(0,184,148,.08) 0%,transparent 70%);animation:float 9s ease-in-out infinite reverse;pointer-events:none;}
+.preis-card.featured{box-shadow:0 8px 40px rgba(15,31,61,.22);}
+.preis-card.featured:hover{box-shadow:0 20px 60px rgba(15,31,61,.3),0 0 0 2px rgba(0,184,148,.25);transform:translateY(-5px);}
+.form-input:focus{box-shadow:0 0 0 3px rgba(0,184,148,.14);}
+.section-tag::before{width:0;transition:width .65s cubic-bezier(.22,1,.36,1) .1s;}
+.section-tag.line-visible::before{width:24px;}
+
+/* Custom cursor */
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;z-index:101;}
+.nav-hamburger span{display:block;width:24px;height:2px;background:var(--navy);border-radius:2px;transition:transform .3s,opacity .3s;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-mobile{position:fixed;top:72px;left:0;right:0;background:rgba(255,255,255,0.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:24px 24px 32px;display:flex;flex-direction:column;gap:6px;z-index:99;transform:translateY(-110%);transition:transform .35s cubic-bezier(.22,1,.36,1);box-shadow:var(--shadow-md);}
+.nav-mobile.open{transform:translateY(0);}
+.nav-mobile a{font-size:1.05rem;font-weight:500;color:var(--text-mid);cursor:pointer;padding:12px 8px;border-bottom:1px solid var(--border);transition:color .2s;}
+.nav-mobile a:hover{color:var(--navy);}
+.nav-mobile .nav-cta-mobile{margin-top:12px;background:var(--navy);color:var(--white)!important;padding:14px;border-radius:100px;text-align:center;font-weight:600!important;border:none;}
+.nav-mobile .nav-cta-mobile:hover{background:var(--teal)!important;}
+
+
+@media(max-width:1100px){nav{padding:0 32px;}section{padding:80px 40px;}.hero{padding:120px 40px 80px;}footer{padding:64px 40px 40px;}.footer-bottom{padding:20px 40px;}.cta-section{padding:80px 40px;}.lteaser-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:860px){.nav-links{display:none;}nav{padding:0 24px;}.nav-hamburger{display:flex;}.hero{padding:100px 24px 60px;min-height:auto;}.hero-bg,.hero-dots{display:none;}section{padding:64px 24px;}.ueber-grid{grid-template-columns:1fr;gap:40px;}.ueber-photo{aspect-ratio:3/2;}.ref-grid{grid-template-columns:1fr;}.kontakt-grid{grid-template-columns:1fr;gap:40px;}.preise-grid{grid-template-columns:1fr 1fr;}.preise-grid-2{grid-template-columns:1fr;}.hero-stats{gap:32px;margin-top:48px;}footer{grid-template-columns:1fr 1fr;gap:36px;padding:48px 24px 32px;}.footer-bottom{padding:16px 24px;flex-direction:column;gap:8px;text-align:center;}.cta-section{padding:64px 24px;}}
+@media(max-width:560px){.hero-title{font-size:2.4rem;}.hero-btns{flex-direction:column;}.hero-btns button{width:100%;}.hero-stats{flex-wrap:wrap;gap:24px;}.preise-grid,.preise-grid-2{grid-template-columns:1fr;}.lteaser-grid{grid-template-columns:1fr;}.form-row{grid-template-columns:1fr;}footer{grid-template-columns:1fr;}.kontakt-form{padding:28px 20px;}section{padding:56px 20px;}}
+/* ── FAQ ── */
+.faq-item{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--white);}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;padding:18px 20px;background:none;border:none;font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:600;color:var(--navy);cursor:pointer;text-align:left;gap:16px;transition:background .2s;}
+.faq-q:hover{background:var(--bg);}
+.faq-icon{font-size:1.2rem;font-weight:300;color:var(--teal);flex-shrink:0;transition:transform .3s;}
+.faq-q.open .faq-icon{transform:rotate(45deg);}
+.faq-a{padding:0 20px;max-height:0;overflow:hidden;font-size:.88rem;color:var(--text-mid);line-height:1.7;transition:max-height .35s cubic-bezier(.22,1,.36,1),padding .35s;}
+.faq-a.open{max-height:200px;padding:0 20px 18px;}
+
+/* ── CHATBOT ── */
+.chatbot-container{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md);display:flex;flex-direction:column;}
+.chatbot-header{background:var(--navy);padding:18px 20px;display:flex;align-items:center;gap:14px;}
+.chatbot-avatar{width:42px;height:42px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+.chatbot-name{font-weight:700;color:var(--white);font-size:.95rem;}
+.chatbot-status{font-size:.75rem;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:6px;margin-top:2px;}
+.chatbot-dot{width:7px;height:7px;border-radius:50%;background:var(--teal);display:inline-block;box-shadow:0 0 0 2px rgba(0,184,148,.3);}
+.chatbot-messages{padding:20px;display:flex;flex-direction:column;gap:12px;min-height:320px;max-height:380px;overflow-y:auto;}
+.chat-msg{display:flex;}
+.chat-msg.bot{justify-content:flex-start;}
+.chat-msg.user{justify-content:flex-end;}
+.chat-bubble{max-width:80%;padding:12px 16px;border-radius:16px;font-size:.87rem;line-height:1.6;}
+.chat-msg.bot .chat-bubble{background:var(--bg);color:var(--text);border-bottom-left-radius:4px;}
+.chat-msg.user .chat-bubble{background:var(--navy);color:var(--white);border-bottom-right-radius:4px;}
+.chat-typing{display:flex;gap:4px;padding:14px 16px;background:var(--bg);border-radius:16px;border-bottom-left-radius:4px;width:fit-content;}
+.chat-typing span{width:7px;height:7px;border-radius:50%;background:var(--text-light);animation:typing 1.2s infinite;}
+.chat-typing span:nth-child(2){animation-delay:.2s;}
+.chat-typing span:nth-child(3){animation-delay:.4s;}
+@keyframes typing{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
+.chat-suggestions{display:flex;gap:8px;flex-wrap:wrap;}
+.chat-suggestions button{background:var(--teal-light);color:var(--teal-dark);border:none;padding:7px 14px;border-radius:100px;font-size:.78rem;font-weight:600;cursor:pointer;transition:background .2s;}
+.chat-suggestions button:hover{background:var(--teal);color:var(--white);}
+.chatbot-input-row{display:flex;gap:10px;padding:14px 16px;border-top:1px solid var(--border);}
+.chatbot-input{flex:1;padding:11px 16px;border:1.5px solid var(--border);border-radius:100px;font-family:'DM Sans',sans-serif;font-size:.88rem;outline:none;transition:border-color .2s;}
+.chatbot-input:focus{border-color:var(--teal);}
+.chatbot-send{width:42px;height:42px;border-radius:50%;background:var(--navy);color:var(--white);border:none;font-size:1.1rem;cursor:pointer;transition:background .2s;flex-shrink:0;}
+.chatbot-send:hover{background:var(--teal);}
+
+@media(max-width:860px){.faq-chatbot-grid{grid-template-columns:1fr!important;}}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-logo" onclick="showPage('home')" style="display:flex;align-items:center;gap:10px;">
+    <svg width="36" height="28" viewBox="0 0 48 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 10 Q12 0 24 10 Q36 20 48 10" stroke="#00b894" stroke-width="4.5" stroke-linecap="round"/>
+      <path d="M0 20 Q12 10 24 20 Q36 30 48 20" stroke="#0f1f3d" stroke-width="4.5" stroke-linecap="round"/>
+      <path d="M0 30 Q12 20 24 30 Q36 40 48 30" stroke="#0f1f3d" stroke-width="2.5" stroke-linecap="round" opacity="0.3"/>
+    </svg>
+    <span style="font-family:'Fraunces',serif;font-size:1.4rem;font-weight:700;color:#0f1f3d;letter-spacing:-.5px;">nor<span style="color:#00b894;">ivo</span></span>
+  </div>
+  <ul class="nav-links">
+    <li><a onclick="showPage('home')">Start</a></li>
+    <li><a onclick="showPage('leistungen')">Leistungen</a></li>
+    <li><a onclick="showPage('ueber')">Über uns</a></li>
+    <li><a onclick="showPage('referenzen')">Referenzen</a></li>
+    <li><a onclick="showPage('faq')">FAQ & Demo</a></li>
+    <li><a onclick="showPage('kontakt')" class="nav-cta">Projekt anfragen</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a onclick="navTo('home')">Start</a>
+  <a onclick="navTo('leistungen')">Leistungen</a>
+  <a onclick="navTo('ueber')">Über uns</a>
+  <a onclick="navTo('referenzen')">Referenzen</a>
+  <a onclick="navTo('faq')">FAQ & Demo</a>
+  <a onclick="navTo('kontakt')" class="nav-cta-mobile">Projekt anfragen</a>
+</div>
+
+<!-- HOME -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-dots"></div>
+    <div class="hero-inner">
+      <div class="hero-badge">KI-Agentur aus Norddeutschland</div>
+      <h1 class="hero-title">Mehr Kunden.<br><em>Weniger Aufwand.</em></h1>
+      <p class="hero-desc">Wir bauen moderne Websites, smarte Chatbots und automatisieren deine Prozesse – damit du dich auf das konzentrieren kannst, was wirklich zählt.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="window.open('https://calendly.com/rosemeierfinn/30min','_blank')">Kostenloses Erstgespräch →</button>
+        <button class="btn-outline" onclick="showPage('leistungen')">Leistungen ansehen</button>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-num">100<span>%</span></div><div class="stat-label">Maßgeschneidert</div></div>
+        <div><div class="stat-num">24<span>h</span></div><div class="stat-label">Antwortzeit</div></div>
+        <div><div class="stat-num">KI<span></span></div><div class="stat-label">Powered</div></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="leistungen-teaser">
+    <div class="section-tag">Was wir machen</div>
+    <h2 class="section-title reveal">Alles aus <em>einer Hand</em></h2>
+    <p class="section-sub reveal stagger-1">Von der ersten Zeile Code bis zum fertigen Automatisierungsprozess – wir begleiten dein Unternehmen digital.</p>
+    <div class="lteaser-grid">
+      <div class="lteaser-card reveal stagger-1" onclick="showPage('leistungen')">
+        <div class="lteaser-icon">🌐</div>
+        <div class="lteaser-title">Website & Design</div>
+        <div class="lteaser-desc">Professionelle Websites die Kunden überzeugen – schnell, modern und mobil optimiert.</div>
+        <div class="lteaser-price">ab 699 €</div>
+      </div>
+      <div class="lteaser-card reveal stagger-2" onclick="showPage('leistungen')">
+        <div class="lteaser-icon">⚡</div>
+        <div class="lteaser-title">Automatisierung</div>
+        <div class="lteaser-desc">Wiederkehrende Aufgaben automatisieren – mehr Zeit für das Wesentliche.</div>
+        <div class="lteaser-price">ab 299 €</div>
+      </div>
+      <div class="lteaser-card reveal stagger-3" onclick="showPage('leistungen')">
+        <div class="lteaser-icon">🤖</div>
+        <div class="lteaser-title">KI-Tools</div>
+        <div class="lteaser-desc">Chatbots, Content-Automatisierung und KI-Beratung für deinen Alltag.</div>
+        <div class="lteaser-price">ab 499 €</div>
+      </div>
+      <div class="lteaser-card reveal stagger-4" onclick="showPage('leistungen')">
+        <div class="lteaser-icon">🛡️</div>
+        <div class="lteaser-title">Wartung & Support</div>
+        <div class="lteaser-desc">Damit deine Website immer läuft – Updates, Backups und schneller Support.</div>
+        <div class="lteaser-price">ab 49 €/Monat</div>
+      </div>
+    </div>
+    <div style="text-align:center;">
+      <button class="btn-primary" onclick="showPage('leistungen')">Alle Leistungen & Preise →</button>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-tag">Referenzen</div>
+    <h2 class="section-title reveal">Echte Projekte, <em>echte Ergebnisse</em></h2>
+    <p class="section-sub reveal stagger-1">Ein Blick auf das was bisher entstanden ist.</p>
+    <div class="ref-grid">
+      <div class="ref-card reveal stagger-1">
+        <div class="ref-tag">Kunde</div>
+        <div class="ref-title">Zertifiziertes Laufcoaching</div>
+        <div class="ref-desc">Professionelle Website für eine zertifizierte Laufcoach aus Flensburg – mobil optimiert, mit Angebots- und Buchungsbereich.</div>
+        <div class="ref-leistung">Website & Design · Flensburg</div>
+      </div>
+      <div class="ref-card reveal stagger-2" style="background:var(--bg);">
+        <div class="ref-tag" style="background:var(--navy);color:var(--white);">Dein Projekt</div>
+        <div class="ref-title">Werde einer der ersten Kunden</div>
+        <div class="ref-desc">Profitiere von attraktiven Einführungspreisen. Kostenloses Erstgespräch – unverbindlich und schnell.</div>
+        <div style="margin-top:20px;"><button class="btn-anfragen" onclick="showPage('kontakt')" style="width:auto;padding:10px 24px;">Anfragen →</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="section-tag">Bereit?</div>
+    <h2 class="cta-title">Wer den Anschluss verpasst,<br><em>hat verloren.</em></h2>
+    <p class="cta-sub">KI ist keine Zukunftsmusik mehr – sie ist jetzt. Lass uns gemeinsam dafür sorgen, dass dein Unternehmen nicht zurückbleibt.</p>
+    <button class="btn-white" onclick="showPage('kontakt')">Jetzt kostenlos anfragen →</button>
+  </section>
+</div>
+
+<!-- LEISTUNGEN -->
+<div class="page" id="page-leistungen">
+  <div style="padding-top:72px;">
+    <section>
+      <div class="section-tag">Leistungen & Preise</div>
+      <h2 class="section-title">Was wir für dich <em>tun können</em></h2>
+      <p class="section-sub">Transparente Preise, keine versteckten Kosten. Alle Pakete beinhalten ein kostenloses Erstgespräch.</p>
+
+      <div class="leistung-block">
+        <div class="leistung-block-header">
+          <div class="leistung-block-icon">🌐</div>
+          <div><div class="leistung-block-title">Website & Design</div><div class="leistung-block-sub">Moderne Websites die Kunden gewinnen – schnell, sicher, mobil</div></div>
+        </div>
+        <div class="preise-grid">
+          <div class="preis-card">
+            <div class="preis-name">Website Basic</div>
+            <div class="preis-einmalig">699 €</div>
+            <div class="preis-monthly">einmalig + 49 €/Monat Wartung</div>
+            <ul class="preis-features">
+              <li>Bis zu 5 Seiten</li>
+              <li>Professionelles Design</li>
+              <li>Mobil optimiert</li>
+              <li>Kontaktformular</li>
+              <li>Grundlegende SEO</li>
+            </ul>
+            <button class="btn-anfragen" onclick="anfragen('Website Basic', '699 € einmalig + 49 €/Monat')">Anfragen</button>
+          </div>
+          <div class="preis-card featured">
+            <div class="preis-badge">Beliebt</div>
+            <div class="preis-name">Website Premium</div>
+            <div class="preis-einmalig">1.499 €</div>
+            <div class="preis-monthly">einmalig + 89 €/Monat Wartung</div>
+            <ul class="preis-features">
+              <li>Bis zu 10 Seiten</li>
+              <li>Individuelles Design</li>
+              <li>Animationen & Effekte</li>
+              <li>Blog / CMS</li>
+              <li>Erweitertes SEO</li>
+              <li>Google Analytics Setup</li>
+            </ul>
+            <button class="btn-anfragen btn-anfragen-featured" onclick="anfragen('Website Premium', '1.499 € einmalig + 89 €/Monat')">Jetzt starten</button>
+          </div>
+          <div class="preis-card">
+            <div class="preis-name">Website + Chatbot</div>
+            <div class="preis-einmalig">2.199 €</div>
+            <div class="preis-monthly">einmalig + 149 €/Monat</div>
+            <ul class="preis-features">
+              <li>Alles aus Website Premium</li>
+              <li>KI-Chatbot integriert</li>
+              <li>24/7 Kundenanfragen</li>
+              <li>Lead-Generierung automatisch</li>
+              <li>Monatliche Optimierung</li>
+            </ul>
+            <button class="btn-anfragen" onclick="anfragen('Website + Chatbot', '2.199 € einmalig + 149 €/Monat')">Anfragen</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="leistung-block">
+        <div class="leistung-block-header">
+          <div class="leistung-block-icon">⚡</div>
+          <div><div class="leistung-block-title">Automatisierung</div><div class="leistung-block-sub">Spare Zeit – lass Prozesse für dich arbeiten</div></div>
+        </div>
+        <div class="preise-grid preise-grid-2">
+          <div class="preis-card">
+            <div class="preis-name">Automatisierung Basic</div>
+            <div class="preis-einmalig">299 €</div>
+            <div class="preis-monthly">einmalig – Einrichtung & Setup</div>
+            <ul class="preis-features">
+              <li>E-Mail-Automatisierung</li>
+              <li>Formular-Weiterleitung</li>
+              <li>Einfache Workflows</li>
+              <li>Einrichtung & Einweisung</li>
+            </ul>
+            <button class="btn-anfragen" onclick="anfragen('Automatisierung Basic', 'ab 299 €')">Anfragen</button>
+          </div>
+          <div class="preis-card featured">
+            <div class="preis-badge">Individuell</div>
+            <div class="preis-name">Automatisierung Pro</div>
+            <div class="preis-einmalig">599 €</div>
+            <div class="preis-monthly">einmalig – je nach Komplexität</div>
+            <ul class="preis-features">
+              <li>Komplexe Prozess-Automatisierung</li>
+              <li>CRM-Integration</li>
+              <li>API-Verknüpfungen</li>
+              <li>Dokumenten-Automatisierung</li>
+              <li>Laufende Betreuung optional</li>
+            </ul>
+            <button class="btn-anfragen btn-anfragen-featured" onclick="anfragen('Automatisierung Pro', 'ab 599 €')">Anfragen</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="leistung-block">
+        <div class="leistung-block-header">
+          <div class="leistung-block-icon">🤖</div>
+          <div><div class="leistung-block-title">KI-Tools</div><div class="leistung-block-sub">Intelligente Lösungen für deinen Alltag</div></div>
+        </div>
+        <div class="preise-grid">
+          <div class="preis-card">
+            <div class="preis-name">Chatbot Basic</div>
+            <div class="preis-einmalig">499 €</div>
+            <div class="preis-monthly">einmalig + 49 €/Monat</div>
+            <ul class="preis-features">
+              <li>KI-Chatbot für deine Website</li>
+              <li>FAQ-Automatisierung</li>
+              <li>Weiterleitung an E-Mail</li>
+              <li>Anpassbares Design</li>
+            </ul>
+            <button class="btn-anfragen" onclick="anfragen('Chatbot Basic', '499 € einmalig + 49 €/Monat')">Anfragen</button>
+          </div>
+          <div class="preis-card featured">
+            <div class="preis-badge">Empfohlen</div>
+            <div class="preis-name">Chatbot Premium</div>
+            <div class="preis-einmalig">999 €</div>
+            <div class="preis-monthly">einmalig + 99 €/Monat</div>
+            <ul class="preis-features">
+              <li>Fortgeschrittener KI-Chatbot</li>
+              <li>Lead-Qualifizierung</li>
+              <li>CRM-Integration</li>
+              <li>Mehrsprachig</li>
+              <li>Monatliche Optimierung</li>
+            </ul>
+            <button class="btn-anfragen btn-anfragen-featured" onclick="anfragen('Chatbot Premium', '999 € einmalig + 99 €/Monat')">Anfragen</button>
+          </div>
+          <div class="preis-card">
+            <div class="preis-name">KI-Beratung</div>
+            <div class="preis-einmalig">150 €</div>
+            <div class="preis-monthly">pro Stunde</div>
+            <ul class="preis-features">
+              <li>Persönliche KI-Strategie</li>
+              <li>Tool-Empfehlungen</li>
+              <li>Implementierungsplan</li>
+              <li>Schulung & Einweisung</li>
+            </ul>
+            <button class="btn-anfragen" onclick="anfragen('KI-Beratung', '150 €/h')">Anfragen</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="leistung-block">
+        <div class="leistung-block-header">
+          <div class="leistung-block-icon">🛡️</div>
+          <div><div class="leistung-block-title">Wartung & Support</div><div class="leistung-block-sub">Damit deine Website immer sicher und aktuell bleibt</div></div>
+        </div>
+        <div class="preise-grid preise-grid-2">
+          <div class="preis-card">
+            <div class="preis-name">Wartung Basis</div>
+            <div class="preis-einmalig">49 €</div>
+            <div class="preis-monthly">pro Monat</div>
+            <ul class="preis-features">
+              <li>Monatliche Updates</li>
+              <li>Automatische Backups</li>
+              <li>Sicherheits-Monitoring</li>
+              <li>E-Mail-Support</li>
+            </ul>
+            <button class="btn-anfragen" onclick="anfragen('Wartung Basis', '49 €/Monat')">Anfragen</button>
+          </div>
+          <div class="preis-card featured">
+            <div class="preis-badge">Vollständig</div>
+            <div class="preis-name">Wartung Premium</div>
+            <div class="preis-einmalig">99 €</div>
+            <div class="preis-monthly">pro Monat</div>
+            <ul class="preis-features">
+              <li>Alles aus Wartung Basis</li>
+              <li>Kleine Inhaltsänderungen</li>
+              <li>Performance-Optimierung</li>
+              <li>Priorität-Support (24h)</li>
+              <li>Monatlicher Bericht</li>
+            </ul>
+            <button class="btn-anfragen btn-anfragen-featured" onclick="anfragen('Wartung Premium', '99 €/Monat')">Anfragen</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="section-tag">Nicht sicher welches Paket?</div>
+      <h2 class="cta-title">Erstgespräch ist <em>kostenlos</em></h2>
+      <p class="cta-sub">Kein Druck, keine Verpflichtung. Wir finden gemeinsam das passende Paket für dein Budget.</p>
+      <button class="btn-white" onclick="window.open('https://calendly.com/rosemeierfinn/30min','_blank')">Kostenloses Erstgespräch →</button>
+    </section>
+  </div>
+</div>
+
+<!-- ÜBER UNS -->
+<div class="page" id="page-ueber">
+  <div style="padding-top:72px;">
+    <section>
+      <div class="ueber-grid">
+        <div class="ueber-photo reveal-left">FR</div>
+        <div class="ueber-text reveal-right">
+          <div>
+            <div class="section-tag">Über uns</div>
+            <h2 class="section-title">Norivo – <em>dein digitaler Partner</em></h2>
+          </div>
+          <p>Norivo ist ein junges Startup aus Flensburg mit einer klaren Mission: kleinen Unternehmen, Selbstständigen und lokalen Betrieben dabei zu helfen, online sichtbarer zu werden und durch den gezielten Einsatz von KI effizienter zu arbeiten.</p>
+          <div class="ueber-quote">„Wer den Anschluss verpasst, hat verloren. KI ist keine Zukunftsmusik mehr – sie verändert die Arbeitswelt jetzt, in diesem Moment."</div>
+          <p>Als Gründer bringe ich tiefes Know-how im Bereich Künstliche Intelligenz mit und sehe es als meine Aufgabe, diese Technologie für jeden zugänglich zu machen – unabhängig von Unternehmensgröße oder Budget.</p>
+          <div class="ueber-punkte">
+            <div class="ueber-punkt">Maßgeschneiderte Lösungen statt Einheitsbrei</div>
+            <div class="ueber-punkt">Transparente Preise ohne versteckte Kosten</div>
+            <div class="ueber-punkt">Persönlicher Ansprechpartner – kein anonymes Ticketsystem</div>
+            <div class="ueber-punkt">Standort Flensburg – Norddeutschland verwurzelt, digital vernetzt</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="cta-section">
+      <div class="section-tag">Lernst du uns kennen?</div>
+      <h2 class="cta-title">Erstgespräch ist <em>kostenlos</em></h2>
+      <p class="cta-sub">Kein Druck, keine Verpflichtung. Wir hören zu, was du brauchst.</p>
+      <button class="btn-white" onclick="window.open('https://calendly.com/rosemeierfinn/30min','_blank')">Gespräch vereinbaren →</button>
+    </section>
+  </div>
+</div>
+
+<!-- REFERENZEN -->
+<div class="page" id="page-referenzen">
+  <div style="padding-top:72px;">
+    <section class="ref-bg">
+      <div class="section-tag">Referenzen</div>
+      <h2 class="section-title">Projekte die <em>sprechen</em></h2>
+      <p class="section-sub">Ein Blick auf das bisher Entstandene – mit dem Anspruch auf Qualität.</p>
+      <div class="ref-grid">
+        <div class="ref-card">
+          <div class="ref-tag">Kunde</div>
+          <div class="ref-title">Zertifiziertes Laufcoaching – Nina Rosemeier</div>
+          <div class="ref-desc">Vollständige Website für eine zertifizierte Laufcoach aus Flensburg. Inklusive Angebotsseite mit gestaffelten Paketen, Erfolgsberichten, FAQ und mobilem Design.</div>
+          <div class="ref-leistung">Website & Design · Flensburg</div>
+        </div>
+        <div class="ref-card">
+          <div class="ref-tag">Demo</div>
+          <div class="ref-title">Goldkruste Bäckerei</div>
+          <div class="ref-desc">Demo-Projekt: Lokale Bäckerei mit moderner Website, Online-Formular und integriertem Chatbot für häufige Kundenanfragen zu Öffnungszeiten und Produkten.</div>
+          <div class="ref-leistung">Website + Chatbot · Demo</div>
+        </div>
+        <div class="ref-card" style="grid-column:span 2;background:var(--navy);">
+          <div class="ref-tag" style="background:var(--teal);color:var(--white);">Dein Projekt</div>
+          <div class="ref-title" style="color:var(--white);">Werde der nächste Referenzkunde</div>
+          <div class="ref-desc" style="color:rgba(255,255,255,.65);">Wir bauen gerade unser Portfolio auf und bieten aktuell besonders attraktive Einführungspreise. Perfekter Zeitpunkt einzusteigen.</div>
+          <div style="margin-top:24px;"><button class="btn-white" onclick="showPage('kontakt')" style="font-size:.85rem;padding:12px 28px;">Jetzt anfragen →</button></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- KONTAKT -->
+<div class="page" id="page-kontakt">
+  <div style="padding-top:72px;background:var(--bg);min-height:100vh;">
+    <section class="kontakt-bg">
+      <div class="kontakt-grid">
+        <div class="reveal-left">
+          <div class="section-tag">Kontakt</div>
+          <h2 class="section-title" style="font-size:2rem;">Lass uns <em>loslegen</em></h2>
+          <p class="section-sub" style="margin-bottom:24px;">Beschreib mir kurz dein Projekt – ich melde mich innerhalb von 24 Stunden.</p>
+          <div class="kontakt-items">
+            <div class="kontakt-item"><div class="kontakt-icon">✉️</div><div><h4>E-Mail</h4><p>contact@norivo.net</p></div></div>
+            <div class="kontakt-item"><div class="kontakt-icon">📍</div><div><h4>Standort</h4><p>Flensburg, Schleswig-Holstein</p></div></div>
+            <div class="kontakt-item"><div class="kontakt-icon">🕐</div><div><h4>Antwortzeit</h4><p>Innerhalb von 24 Stunden</p></div></div>
+            <div class="kontakt-item" style="cursor:pointer;" onclick="window.open('https://calendly.com/rosemeierfinn/30min','_blank')"><div class="kontakt-icon">📅</div><div><h4>Termin buchen</h4><p>Direkt in Calendly buchen →</p></div></div>
+          </div>
+        </div>
+        <div class="kontakt-form reveal-right">
+          <div class="form-title">Projekt anfragen</div>
+          <div class="form-sub">Kostenloses Erstgespräch – unverbindlich & schnell.</div>
+          <div id="selected-paket-info" class="preis-selected-info"></div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Vorname</label><input type="text" class="form-input" id="f-vorname" placeholder="Max"></div>
+            <div class="form-group"><label class="form-label">Nachname</label><input type="text" class="form-input" id="f-nachname" placeholder="Mustermann"></div>
+          </div>
+          <div class="form-group"><label class="form-label">E-Mail</label><input type="email" class="form-input" id="f-email" placeholder="max@firma.de"></div>
+          <div class="form-group"><label class="form-label">Unternehmen / Branche</label><input type="text" class="form-input" id="f-branche" placeholder="z.B. Bäckerei, Handwerker, Coach..."></div>
+          <div class="form-group">
+            <label class="form-label">Gewünschte Leistung</label>
+            <select class="form-input" id="f-leistung">
+              <option value="">– Bitte wählen –</option>
+              <option value="Website Basic (699 € + 49 €/M)">Website Basic – 699 € + 49 €/M</option>
+              <option value="Website Premium (1.499 € + 89 €/M)">Website Premium – 1.499 € + 89 €/M</option>
+              <option value="Website + Chatbot (2.199 € + 149 €/M)">Website + Chatbot – 2.199 € + 149 €/M</option>
+              <option value="Automatisierung Basic (ab 299 €)">Automatisierung Basic – ab 299 €</option>
+              <option value="Automatisierung Pro (ab 599 €)">Automatisierung Pro – ab 599 €</option>
+              <option value="Chatbot Basic (499 € + 49 €/M)">Chatbot Basic – 499 € + 49 €/M</option>
+              <option value="Chatbot Premium (999 € + 99 €/M)">Chatbot Premium – 999 € + 99 €/M</option>
+              <option value="KI-Beratung (150 €/h)">KI-Beratung – 150 €/h</option>
+              <option value="Wartung Basis (49 €/M)">Wartung Basis – 49 €/M</option>
+              <option value="Wartung Premium (99 €/M)">Wartung Premium – 99 €/M</option>
+              <option value="Noch unsicher – Erstgespräch gewünscht">Noch unsicher – Erstgespräch gewünscht</option>
+            </select>
+          </div>
+          <div class="form-group"><label class="form-label">Dein Projekt</label><textarea class="form-input" id="f-nachricht" placeholder="Was soll entstehen? Was ist dein Ziel?"></textarea></div>
+          <button class="form-submit" onclick="submitKontakt()">Anfrage senden →</button>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="page" id="page-faq">
+  <div style="padding-top:72px;">
+    <section>
+      <div class="section-tag">FAQ & Live-Demo</div>
+      <h2 class="section-title reveal">Häufige Fragen &<br><em>dein KI-Assistent</em></h2>
+      <p class="section-sub reveal stagger-1">Hier findest du Antworten auf die häufigsten Fragen – und kannst direkt live ausprobieren, wie ein KI-Chatbot funktioniert.</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
+
+        <!-- FAQ Liste -->
+        <div class="reveal-left">
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div class="faq-item">
+              <button class="faq-q" onclick="toggleFaq(this)">
+                Was kostet eine Website bei Norivo?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a">Unsere Websites starten ab 699 € einmalig. Das Basis-Paket (bis 5 Seiten) kostet 699 € + 49 €/Monat Wartung. Das Premium-Paket (bis 10 Seiten, Blog, SEO) kostet 1.499 € + 89 €/Monat. Alle Preise sind transparent – keine versteckten Kosten.</div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" onclick="toggleFaq(this)">
+                Wie lange dauert die Umsetzung?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a">Eine einfache Website ist meist innerhalb von 1–2 Wochen fertig. Komplexere Projekte mit Chatbot und Automatisierungen dauern 2–4 Wochen. Ich halte dich immer auf dem Laufenden.</div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" onclick="toggleFaq(this)">
+                Was ist ein KI-Chatbot genau?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a">Ein KI-Chatbot ist ein intelligenter Assistent auf deiner Website, der Kundenfragen automatisch beantwortet – rund um die Uhr, ohne dass du dabei sein musst. Er kann Öffnungszeiten erklären, Anfragen entgegennehmen, Preise nennen und vieles mehr. Genau wie der Chat rechts – probier ihn aus!</div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" onclick="toggleFaq(this)">
+                Brauche ich technisches Wissen?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a">Überhaupt nicht. Du beschreibst mir was du brauchst, ich kümmere mich um alles Technische. Nach dem Launch erkläre ich dir kurz wie du einfache Inhalte selbst ändern kannst – wenn du das möchtest.</div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" onclick="toggleFaq(this)">
+                Was ist im Wartungspaket enthalten?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a">Das Basis-Paket (49 €/Monat) enthält monatliche Updates, automatische Backups und Sicherheits-Monitoring. Das Premium-Paket (99 €/Monat) enthält zusätzlich kleine Inhaltsänderungen, Performance-Optimierung und Priorität-Support.</div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" onclick="toggleFaq(this)">
+                Kann ich die Website später erweitern?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a">Ja, jederzeit. Wir bauen von Anfang an auf einer flexiblen Basis, sodass später problemlos ein Chatbot, ein Shop oder weitere Seiten hinzugefügt werden können.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Chatbot Demo -->
+        <div class="reveal-right">
+          <div class="chatbot-container">
+            <div class="chatbot-header">
+              <div class="chatbot-avatar">🤖</div>
+              <div>
+                <div class="chatbot-name">Norivo Assistent</div>
+                <div class="chatbot-status"><span class="chatbot-dot"></span>Online – Live-Demo</div>
+              </div>
+            </div>
+            <div class="chatbot-messages" id="chatMessages">
+              <div class="chat-msg bot">
+                <div class="chat-bubble">Hallo! 👋 Ich bin der Norivo KI-Assistent. Ich kann dir alles über unsere Leistungen, Preise und Prozesse erklären. Was möchtest du wissen?</div>
+              </div>
+              <div class="chat-suggestions">
+                <button onclick="sendSuggestion('Was kostet eine Website?')">💰 Preise?</button>
+                <button onclick="sendSuggestion('Wie funktioniert ein Chatbot?')">🤖 Chatbot?</button>
+                <button onclick="sendSuggestion('Wie schnell kann ich eine Website bekommen?')">⚡ Wie schnell?</button>
+              </div>
+            </div>
+            <div class="chatbot-input-row">
+              <input type="text" id="chatInput" class="chatbot-input" placeholder="Stell mir eine Frage..." onkeydown="if(event.key==='Enter')sendChat()">
+              <button class="chatbot-send" onclick="sendChat()">→</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="section-tag">Überzeugt?</div>
+      <h2 class="cta-title">Einen solchen Chatbot <em>für dich?</em></h2>
+      <p class="cta-sub">Ab 499 € einmalig – direkt auf deiner Website, angepasst auf dein Unternehmen.</p>
+      <button class="btn-white" onclick="anfragen('Chatbot Basic', '499 € einmalig + 49 €/Monat')">Chatbot anfragen →</button>
+    </section>
+  </div>
+</div>
+
+<!-- IMPRESSUM -->
+<div class="page" id="page-impressum">
+  <div style="padding-top:72px;min-height:100vh;">
+    <section>
+      <div class="impressum-content">
+        <div class="section-tag">Rechtliches</div>
+        <h2 class="section-title">Impressum &<br><em>Datenschutz</em></h2>
+        <h3>Angaben gemäß § 5 TMG</h3>
+        <p>Finn Rosemeier</p><p>Norivo – KI-Agentur</p><p>Jakob-Röschmann-Weg 9</p><p>24941 Flensburg, Schleswig-Holstein</p>
+        <h3>Kontakt</h3>
+        <p>E-Mail: contact@norivo.net</p><p>Telefon: +49 1573 1832106</p><p>Website: norivo.net</p>
+        <h3>Kleinunternehmer</h3>
+        <p>Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.</p>
+        <h3>Haftungsausschluss</h3>
+        <p>Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität kann keine Gewähr übernommen werden.</p>
+        <h3 style="margin-top:48px;">Datenschutzerklärung</h3>
+        <h3>Verantwortlicher</h3>
+        <p>Finn Rosemeier, Norivo – KI-Agentur, contact@norivo.net</p>
+        <h3>Erhebung personenbezogener Daten</h3>
+        <p>Beim Ausfüllen des Kontaktformulars werden Name, E-Mail-Adresse und Nachricht erhoben. Diese Daten werden ausschließlich zur Bearbeitung deiner Anfrage verwendet und nicht an Dritte weitergegeben.</p>
+        <h3>Rechtsgrundlage</h3>
+        <p>Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO und Art. 6 Abs. 1 lit. f DSGVO.</p>
+        <h3>Speicherdauer</h3>
+        <p>Die Daten werden gelöscht, sobald sie nicht mehr benötigt werden, spätestens nach 2 Jahren.</p>
+        <h3>Deine Rechte</h3>
+        <p>Du hast das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung. Wende dich an contact@norivo.net.</p>
+        <h3>Hosting</h3>
+        <p>Diese Website wird bei Netlify gehostet. Weitere Informationen unter netlify.com/privacy.</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<footer id="main-footer">
+  <div>
+    <div class="footer-logo" style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+      <svg width="36" height="28" viewBox="0 0 48 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 10 Q12 0 24 10 Q36 20 48 10" stroke="#00b894" stroke-width="4.5" stroke-linecap="round"/>
+        <path d="M0 20 Q12 10 24 20 Q36 30 48 20" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"/>
+        <path d="M0 30 Q12 20 24 30 Q36 40 48 30" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.3"/>
+      </svg>
+      <span style="font-family:'Fraunces',serif;font-size:1.4rem;font-weight:700;color:#ffffff;letter-spacing:-.5px;">nor<span style="color:#00b894;">ivo</span></span>
+    </div>
+    <p class="footer-desc">KI-Agentur für kleine Unternehmen, Selbstständige und lokale Betriebe. Maßgeschneidert, fair, effektiv.</p>
+  </div>
+  <div>
+    <div class="footer-heading">Navigation</div>
+    <ul class="footer-links">
+      <li><a onclick="showPage('home')">Startseite</a></li>
+      <li><a onclick="showPage('leistungen')">Leistungen</a></li>
+      <li><a onclick="showPage('ueber')">Über uns</a></li>
+      <li><a onclick="showPage('referenzen')">Referenzen</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-heading">Leistungen</div>
+    <ul class="footer-links">
+      <li><a onclick="showPage('leistungen')">Website & Design</a></li>
+      <li><a onclick="showPage('leistungen')">Automatisierung</a></li>
+      <li><a onclick="showPage('leistungen')">KI-Tools</a></li>
+      <li><a onclick="showPage('leistungen')">Wartung & Support</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-heading">Rechtliches</div>
+    <ul class="footer-links">
+      <li><a onclick="showPage('kontakt')">Kontakt</a></li>
+      <li><a onclick="showPage('impressum')">Impressum</a></li>
+      <li><a onclick="showPage('impressum')">Datenschutz</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>© 2026 Norivo – KI-Agentur · Finn Rosemeier · norivo.net</p>
+  <p>Erstellt von Norivo</p>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<div class="cursor-dot" id="cursorDot"></div>
+
+<script>
+const API_BASE = 'https://nexus-ai-backend-production-fbbe.up.railway.app';
+
+// ── Custom cursor ──
+const dot = document.getElementById('cursorDot');
+document.addEventListener('mousemove', e => {
+  dot.style.left = e.clientX + 'px'; dot.style.top = e.clientY + 'px';
+});
+function addCursorListeners() {}
+
+// ── Page switching ──
+function showPage(page) {
+  const target = document.getElementById('page-' + page);
+  if (!target) return;
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  target.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  setTimeout(() => initReveal(), 50);
+  addCursorListeners();
+}
+
+// ── Scroll effects ──
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+  checkReveal();
+});
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 4000);
+}
+
+function anfragen(leistung, preis) {
+  showPage('kontakt');
+  setTimeout(() => {
+    const sel = document.getElementById('f-leistung');
+    for (let i = 0; i < sel.options.length; i++) {
+      if (sel.options[i].text.toLowerCase().includes(leistung.toLowerCase().split(' ').slice(0,2).join(' '))) {
+        sel.selectedIndex = i; break;
+      }
+    }
+    const info = document.getElementById('selected-paket-info');
+    info.textContent = '✓ Vorausgewählt: ' + leistung + ' – ' + preis;
+    info.classList.add('visible');
+  }, 350);
+}
+
+// ── Scroll reveal system ──
+function checkReveal() {
+  const items = document.querySelectorAll('.page.active .reveal, .page.active .reveal-left, .page.active .reveal-right, .page.active .reveal-scale');
+  items.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.88) el.classList.add('visible');
+  });
+  // Animate section-tag lines
+  document.querySelectorAll('.page.active .section-tag').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.9) el.classList.add('line-visible');
+  });
+}
+function initReveal() {
+  // Reset reveals for new page
+  document.querySelectorAll('.page.active .reveal, .page.active .reveal-left, .page.active .reveal-right, .page.active .reveal-scale').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.88) el.classList.add('visible');
+  });
+  document.querySelectorAll('.page.active .section-tag').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.9) el.classList.add('line-visible');
+  });
+  animateCounters();
+}
+
+// ── Number counter animation ──
+function animateCounters() {
+  document.querySelectorAll('.page.active .stat-num').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && !el.dataset.counted) {
+      el.dataset.counted = '1';
+      const text = el.innerHTML;
+      const num = parseFloat(text.replace(/<[^>]+>/g, '').trim());
+      if (!isNaN(num) && num > 0) {
+        let start = 0; const duration = 1200;
+        const startTime = performance.now();
+        const span = el.querySelector('span');
+        function update(now) {
+          const progress = Math.min((now - startTime) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = Math.round(start + (num - start) * eased);
+          el.innerHTML = current + (span ? span.outerHTML : '');
+          if (progress < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+      }
+    }
+  });
+}
+
+// Init on load
+window.addEventListener('load', () => { initReveal(); checkReveal(); });
+
+function toggleFaq(btn) {
+  const answer = btn.nextElementSibling;
+  const isOpen = btn.classList.contains('open');
+  document.querySelectorAll('.faq-q.open').forEach(b => {
+    b.classList.remove('open');
+    b.nextElementSibling.classList.remove('open');
+  });
+  if (!isOpen) { btn.classList.add('open'); answer.classList.add('open'); }
+}
+
+// ── Chatbot ──
+const SYSTEM_PROMPT = 'Du bist der freundliche KI-Assistent von Norivo, einer KI-Agentur aus Flensburg. ' +
+'Du beantwortest Fragen über Norivo auf Deutsch, kurz und klar (max 3 Sätze). ' +
+'Norivo-Leistungen und Preise: ' +
+'Website Basic: 699€ einmalig + 49€/Monat. ' +
+'Website Premium: 1.499€ einmalig + 89€/Monat. ' +
+'Website + Chatbot: 2.199€ einmalig + 149€/Monat. ' +
+'Chatbot Basic: 499€ einmalig + 49€/Monat. ' +
+'Chatbot Premium: 999€ einmalig + 99€/Monat. ' +
+'Automatisierung Basic: ab 299€. Automatisierung Pro: ab 599€. ' +
+'KI-Beratung: 150€/Stunde. Wartung Basis: 49€/Monat. Wartung Premium: 99€/Monat. ' +
+'Inhaber: Finn Rosemeier, Flensburg. Kontakt: contact@norivo.net. Antwortzeit: 24h. ' +
+'Wenn jemand ein Projekt anfragen oder ein Erstgespräch buchen möchte, empfiehl den Calendly-Link: https://calendly.com/rosemeierfinn/30min – dort kann man direkt einen kostenlosen 30-Minuten-Termin buchen. E-Mail: contact@norivo.net.';
+
+let chatHistory = [];
+
+async function sendChat() {
+  const input = document.getElementById('chatInput');
+  const msg = input.value.trim();
+  if (!msg) return;
+  input.value = '';
+  appendMessage('user', msg);
+  showTyping();
+  chatHistory.push({ role: 'user', content: msg });
+  try {
+    const res = await fetch(API_BASE + '/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: chatHistory })
+    });
+    const data = await res.json();
+    const reply = data.reply || 'Entschuldigung, ich hatte ein Problem. Schreib uns direkt: contact@norivo.net';
+    chatHistory.push({ role: 'assistant', content: reply });
+    removeTyping();
+    appendMessage('bot', reply);
+  } catch(e) {
+    removeTyping();
+    appendMessage('bot', 'Entschuldigung, kurzer technischer Fehler. Schreib uns direkt an contact@norivo.net');
+  }
+}
+
+function sendSuggestion(text) {
+  document.getElementById('chatInput').value = text;
+  document.querySelector('.chat-suggestions')?.remove();
+  sendChat();
+}
+
+function appendMessage(role, text) {
+  const msgs = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = 'chat-msg ' + role;
+  div.innerHTML = '<div class="chat-bubble">' + text.replace(/\n/g, '<br>') + '</div>';
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function showTyping() {
+  const msgs = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = 'chat-msg bot'; div.id = 'typingIndicator';
+  div.innerHTML = '<div class="chat-typing"><span></span><span></span><span></span></div>';
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function removeTyping() {
+  document.getElementById('typingIndicator')?.remove();
+}
+
+
+  function toggleMenu() {
+  const btn = document.getElementById('hamburger');
+  const menu = document.getElementById('navMobile');
+  btn.classList.toggle('open');
+  menu.classList.toggle('open');
+}
+function navTo(page) {
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('navMobile').classList.remove('open');
+  showPage(page);
+}
+
+async function submitKontakt() {
+  const vorname = document.getElementById('f-vorname').value.trim();
+  const nachname = document.getElementById('f-nachname').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const branche = document.getElementById('f-branche').value.trim();
+  const leistung = document.getElementById('f-leistung').value;
+  const nachricht = document.getElementById('f-nachricht').value.trim();
+  if (!vorname || !email) { showToast('⚠ Bitte Vorname und E-Mail ausfüllen.'); return; }
+  if (!leistung) { showToast('⚠ Bitte eine Leistung auswählen.'); return; }
+
+  const btn = document.querySelector('.form-submit');
+  btn.textContent = 'Wird gesendet...';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch('https://formspree.io/f/xbdqgzaw', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ vorname, nachname, email, branche, leistung, nachricht })
+    });
+    const data = await res.json();
+    if (data.ok) {
+      showToast('✓ Anfrage gesendet – ich melde mich innerhalb von 24h!');
+      ['f-vorname','f-nachname','f-email','f-branche','f-nachricht'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('f-leistung').selectedIndex = 0;
+      document.getElementById('selected-paket-info').classList.remove('visible');
+      btn.textContent = '✓ Gesendet!';
+    } else {
+      showToast('Fehler – bitte schreib direkt an contact@norivo.net');
+      btn.textContent = 'Anfrage senden →';
+      btn.disabled = false;
+    }
+  } catch {
+    showToast('Fehler – bitte schreib direkt an contact@norivo.net');
+    btn.textContent = 'Anfrage senden →';
+    btn.disabled = false;
+  }
+}
+</script>
+</body>
+</html>
