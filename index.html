@@ -7,7 +7,7 @@
 <title>Norivo – Webdesign für kleine & mittlere Unternehmen</title>
 
 <!-- SEO -->
-<meta name="description" content="Professionelles Webdesign aus Flensburg für kleine Unternehmen, Selbstständige und lokale Betriebe. Wir erstellen moderne Websites, Chatbots und digitale Lösungen – maßgeschneidert und zum fairen Preis.">
+<meta name="description" content="Professionelles Webdesign aus Flensburg für kleine Unternehmen, Selbstständige und lokale Betriebe. Wir erstellen moderne Websites und digitale Lösungen – maßgeschneidert und zum fairen Preis.">
 <meta name="keywords" content="Webdesign Flensburg, Website erstellen lassen Flensburg, Webseite kleine Unternehmen, Website mit Chatbot, Webdesign Schleswig-Holstein, professionelle Website, Kontaktformular Website">
 <meta name="author" content="Finn Rosemeier – Norivo">
 <meta name="robots" content="index, follow">
@@ -517,8 +517,8 @@ footer{grid-template-columns:1fr 1fr;}
   <a onclick="navTo('faq')">FAQ & Demo</a>
   <a onclick="navTo('kontakt')" class="nav-cta-mobile">Projekt anfragen</a>
   <div style="display:flex;gap:10px;margin-top:8px;">
-    <button onclick="setLang('de');toggleMenu();" style="flex:1;background:var(--teal-light);border:1px solid var(--border);border-radius:100px;padding:11px;font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:600;color:var(--navy);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;">🇩🇪 Deutsch</button>
-    <button onclick="setLang('en');toggleMenu();" style="flex:1;background:transparent;border:1px solid var(--border);border-radius:100px;padding:11px;font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:500;color:var(--text-mid);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;">🇬🇧 English</button>
+    <button id="lang-de-m" onclick="setLang('de');toggleMenu();" style="flex:1;background:var(--teal-light);border:1px solid var(--border);border-radius:100px;padding:11px;font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:600;color:var(--navy);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;">🇩🇪 Deutsch</button>
+    <button id="lang-en-m" onclick="setLang('en');toggleMenu();" style="flex:1;background:transparent;border:1px solid var(--border);border-radius:100px;padding:11px;font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:500;color:var(--text-mid);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;">🇬🇧 English</button>
     <button onclick="toggleDark()" style="background:transparent;border:1px solid var(--border);border-radius:100px;width:46px;padding:11px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;">
       <svg id="dark-icon-moon-m" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--navy);"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       <svg id="dark-icon-sun-m" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--navy);display:none;"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -550,7 +550,7 @@ footer{grid-template-columns:1fr 1fr;}
   <section class="leistungen-teaser">
     <div class="section-tag" data-i18n="tag_wir">Was wir machen</div>
     <h2 class="section-title reveal" data-i18n="lt_title">Alles aus <em>einer Hand</em></h2>
-    <p class="section-sub reveal stagger-1" data-i18n="lt_sub">Von der ersten Zeile Code bis zum fertigen Automatisierungsprozess – wir begleiten dein Unternehmen digital.</p>
+    <p class="section-sub reveal stagger-1" data-i18n="lt_sub">Von der ersten Zeile Code bis zur fertigen Website – wir begleiten dein Unternehmen digital.</p>
     <div class="lteaser-grid">
       <div class="lteaser-card reveal stagger-1" onclick="showPage('leistungen')">
         <div class="lteaser-icon">🌐</div>
@@ -558,19 +558,7 @@ footer{grid-template-columns:1fr 1fr;}
         <div class="lteaser-desc">Professionelle Websites die Kunden überzeugen – schnell, modern und mobil optimiert.</div>
         <div class="lteaser-price">ab 699 €</div>
       </div>
-      <div class="lteaser-card reveal stagger-2" onclick="showPage('leistungen')">
-        <div class="lteaser-icon">⚡</div>
-        <div class="lteaser-title">Automatisierung</div>
-        <div class="lteaser-desc">Wiederkehrende Aufgaben automatisieren – mehr Zeit für das Wesentliche.</div>
-        <div class="lteaser-price">ab 299 €</div>
-      </div>
       <div class="lteaser-card reveal stagger-3" onclick="showPage('leistungen')">
-        <div class="lteaser-icon">🤖</div>
-        <div class="lteaser-title">KI-Tools</div>
-        <div class="lteaser-desc">Chatbots, Content-Automatisierung und KI-Beratung für deinen Alltag.</div>
-        <div class="lteaser-price">ab 499 €</div>
-      </div>
-      <div class="lteaser-card reveal stagger-4" onclick="showPage('leistungen')">
         <div class="lteaser-icon">🛡️</div>
         <div class="lteaser-title">Wartung & Support</div>
         <div class="lteaser-desc">Damit deine Website immer läuft – Updates, Backups und schneller Support.</div>
@@ -587,14 +575,27 @@ footer{grid-template-columns:1fr 1fr;}
     <h2 class="section-title reveal">Echte Projekte, <em>echte Ergebnisse</em></h2>
     <p class="section-sub reveal stagger-1">Ein Blick auf das was bisher entstanden ist.</p>
     <div class="ref-grid">
-      <div class="ref-card reveal stagger-1">
-        <div class="ref-tag">Kunde</div>
-        <div class="ref-title">Zertifiziertes Laufcoaching</div>
-        <div class="ref-desc">Professionelle Website für eine zertifizierte Laufcoach aus Flensburg – mobil optimiert, mit Angebots- und Buchungsbereich.</div>
-        <div class="ref-leistung">Website & Design · Flensburg</div>
+      <div class="ref-card reveal stagger-1" style="padding:0;overflow:hidden;">
+        <!-- Browser Mockup Preview -->
+        <div style="background:#e8eaed;padding:10px 12px 0;display:flex;align-items:center;gap:6px;">
+          <div style="display:flex;gap:5px;">
+            <div style="width:10px;height:10px;border-radius:50%;background:#ff5f57;"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#febc2e;"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#28c840;"></div>
+          </div>
+          <div style="flex:1;background:#fff;border-radius:4px;padding:4px 10px;font-size:0.72rem;color:#666;font-family:monospace;">zertifiziertes-laufcoaching.de</div>
+        </div>
+        <iframe src="https://www.zertifiziertes-laufcoaching.de" style="width:100%;height:220px;border:none;display:block;pointer-events:none;transform-origin:top left;" scrolling="no" loading="lazy"></iframe>
+        <div style="padding:20px 24px 24px;">
+          <div class="ref-tag">✓ Kunde</div>
+          <div class="ref-title">Zertifiziertes Laufcoaching</div>
+          <div class="ref-desc">Professionelle Website für eine zertifizierte Laufcoach aus Flensburg – mobil optimiert, mit Angebots- und Buchungsbereich.</div>
+          <div class="ref-leistung">Website & Design · Flensburg</div>
+          <a href="https://www.zertifiziertes-laufcoaching.de" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:0.82rem;font-weight:600;color:var(--teal-dark);text-decoration:none;">Website besuchen →</a>
+        </div>
       </div>
       <div class="ref-card reveal stagger-2" style="background:var(--bg);">
-        <div class="ref-tag" style="background:var(--navy);color:var(--white);">Dein Projekt</div>
+        <div class="ref-tag" style="background:var(--teal);color:#fff;">Dein Projekt</div>
         <div class="ref-title">Werde einer der ersten Kunden</div>
         <div class="ref-desc">Profitiere von attraktiven Einführungspreisen. Kostenloses Erstgespräch – unverbindlich und schnell.</div>
         <div style="margin-top:20px;"><button class="btn-anfragen" onclick="showPage('kontakt')" style="width:auto;padding:10px 24px;">Anfragen →</button></div>
@@ -663,7 +664,7 @@ footer{grid-template-columns:1fr 1fr;}
           <div class="leistung-block-icon">🌐</div>
           <div><div class="leistung-block-title" data-i18n="lb1_title">Website & Design</div><div class="leistung-block-sub" data-i18n="lb1_sub">Moderne Websites die Kunden gewinnen – schnell, sicher, mobil</div></div>
         </div>
-        <div class="preise-grid">
+        <div class="preise-grid preise-grid-2">
           <div class="preis-card">
             <div class="preis-name">Website Basic</div>
             <div class="preis-einmalig">699 €</div>
@@ -692,63 +693,17 @@ footer{grid-template-columns:1fr 1fr;}
             </ul>
             <button class="btn-anfragen btn-anfragen-featured" onclick="anfragen('Website Premium', '1.499 € einmalig + 89 €/Monat')" data-i18n="btn_start">Jetzt starten</button>
           </div>
-          <div class="preis-card">
-            <div class="preis-name">Website + Chatbot</div>
-            <div class="preis-einmalig">2.199 €</div>
-            <div class="preis-monthly">einmalig + 149 €/Monat</div>
-            <ul class="preis-features">
-              <li>Alles aus Website Premium</li>
-              <li>KI-Chatbot integriert</li>
-              <li>24/7 Kundenanfragen</li>
-              <li>Lead-Generierung automatisch</li>
-              <li>Monatliche Optimierung</li>
-            </ul>
-            <button class="btn-anfragen" onclick="anfragen('Website + Chatbot', '2.199 € einmalig + 149 €/Monat')">Anfragen</button>
-          </div>
         </div>
       </div>
 
-      <div class="leistung-block">
-        <div class="leistung-block-header">
-          <div class="leistung-block-icon">⚡</div>
-          <div><div class="leistung-block-title">Automatisierung</div><div class="leistung-block-sub">Spare Zeit – lass Prozesse für dich arbeiten</div></div>
-        </div>
-        <div class="preise-grid preise-grid-2">
-          <div class="preis-card">
-            <div class="preis-name">Automatisierung Basic</div>
-            <div class="preis-einmalig">299 €</div>
-            <div class="preis-monthly">einmalig – Einrichtung & Setup</div>
-            <ul class="preis-features">
-              <li>E-Mail-Automatisierung</li>
-              <li>Formular-Weiterleitung</li>
-              <li>Einfache Workflows</li>
-              <li>Einrichtung & Einweisung</li>
-            </ul>
-            <button class="btn-anfragen" onclick="anfragen('Automatisierung Basic', 'ab 299 €')">Anfragen</button>
-          </div>
-          <div class="preis-card featured">
-            <div class="preis-badge">Individuell</div>
-            <div class="preis-name">Automatisierung Pro</div>
-            <div class="preis-einmalig">599 €</div>
-            <div class="preis-monthly">einmalig – je nach Komplexität</div>
-            <ul class="preis-features">
-              <li>Komplexe Prozess-Automatisierung</li>
-              <li>CRM-Integration</li>
-              <li>API-Verknüpfungen</li>
-              <li>Dokumenten-Automatisierung</li>
-              <li>Laufende Betreuung optional</li>
-            </ul>
-            <button class="btn-anfragen btn-anfragen-featured" onclick="anfragen('Automatisierung Pro', 'ab 599 €')">Anfragen</button>
-          </div>
-        </div>
-      </div>
+
 
       <div class="leistung-block">
         <div class="leistung-block-header">
           <div class="leistung-block-icon">🤖</div>
           <div><div class="leistung-block-title">KI-Tools</div><div class="leistung-block-sub">Intelligente Lösungen für deinen Alltag</div></div>
         </div>
-        <div class="preise-grid">
+        <div class="preise-grid preise-grid-2">
           <div class="preis-card">
             <div class="preis-name">Chatbot Basic</div>
             <div class="preis-einmalig">499 €</div>
@@ -775,22 +730,10 @@ footer{grid-template-columns:1fr 1fr;}
             </ul>
             <button class="btn-anfragen btn-anfragen-featured" onclick="anfragen('Chatbot Premium', '999 € einmalig + 99 €/Monat')">Anfragen</button>
           </div>
-          <div class="preis-card">
-            <div class="preis-name">KI-Beratung</div>
-            <div class="preis-einmalig">150 €</div>
-            <div class="preis-monthly">pro Stunde</div>
-            <ul class="preis-features">
-              <li>Persönliche KI-Strategie</li>
-              <li>Tool-Empfehlungen</li>
-              <li>Implementierungsplan</li>
-              <li>Schulung & Einweisung</li>
-            </ul>
-            <button class="btn-anfragen" onclick="anfragen('KI-Beratung', '150 €/h')">Anfragen</button>
-          </div>
         </div>
       </div>
 
-      <div class="leistung-block">
+            <div class="leistung-block">
         <div class="leistung-block-header">
           <div class="leistung-block-icon">🛡️</div>
           <div><div class="leistung-block-title">Wartung & Support</div><div class="leistung-block-sub">Damit deine Website immer sicher und aktuell bleibt</div></div>
@@ -834,7 +777,7 @@ footer{grid-template-columns:1fr 1fr;}
       <div style="max-width:760px;margin:0 auto;">
         <div style="display:flex;gap:8px;margin-bottom:32px;">
           <button onclick="switchCalc('website')" id="calc-tab-website" style="flex:1;padding:12px;border-radius:10px;border:2px solid var(--teal);background:var(--teal);color:#fff;font-family:'DM Sans',sans-serif;font-weight:600;font-size:0.88rem;cursor:pointer;transition:all .2s;"><span id="calc-tab-web-label">🌐 Website</span></button>
-          <button onclick="switchCalc('chatbot')" id="calc-tab-chatbot" style="flex:1;padding:12px;border-radius:10px;border:2px solid var(--border);background:var(--white);color:var(--navy);font-family:'DM Sans',sans-serif;font-weight:500;font-size:0.88rem;cursor:pointer;transition:all .2s;"><span id="calc-tab-chat-label">🤖 Chatbot & Automatisierung</span></button>
+
         </div>
         <!-- Website Calculator -->
         <div id="calc-website" style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:36px;">
@@ -846,10 +789,7 @@ footer{grid-template-columns:1fr 1fr;}
             </div>
           </div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px;">
-            <label style="display:flex;align-items:center;gap:10px;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:14px 16px;cursor:pointer;transition:border-color .2s;">
-              <input type="checkbox" id="opt-chatbot" onchange="calcPrice()" style="accent-color:var(--teal);width:16px;height:16px;">
-              <span style="font-size:0.88rem;font-weight:500;color:var(--navy);" id="opt-chatbot-label">+ KI-Chatbot</span>
-            </label>
+
             <label style="display:flex;align-items:center;gap:10px;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:14px 16px;cursor:pointer;">
               <input type="checkbox" id="opt-blog" onchange="calcPrice()" style="accent-color:var(--teal);width:16px;height:16px;">
               <span style="font-size:0.88rem;font-weight:500;color:var(--navy);" id="opt-blog-label">+ Blog / CMS</span>
@@ -875,32 +815,6 @@ footer{grid-template-columns:1fr 1fr;}
             <div><div style="font-size:0.75rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;" id="calc-einmalig-label">Einmalig</div><div style="font-family:'Fraunces',serif;font-size:2.2rem;font-weight:700;color:#fff;letter-spacing:-1px;" id="calc-einmalig">699 €</div></div>
             <div><div style="font-size:0.75rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;" id="calc-monatlich-label">Monatlich</div><div style="font-family:'Fraunces',serif;font-size:2.2rem;font-weight:700;color:var(--teal);letter-spacing:-1px;" id="calc-monatlich">49 €</div></div>
             <button onclick="showPage('kontakt')" style="background:var(--teal);color:#fff;border:none;border-radius:100px;padding:12px 24px;font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:600;cursor:pointer;" id="calc-anfragen-btn">Dieses Paket anfragen →</button>
-          </div>
-        </div>
-        <!-- Chatbot/Automation Calculator -->
-        <div id="calc-chatbot" style="display:none;background:var(--white);border:1px solid var(--border);border-radius:16px;padding:36px;">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px;">
-            <label style="display:flex;align-items:center;gap:10px;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:14px 16px;cursor:pointer;">
-              <input type="radio" name="chat-type" value="basic" onchange="calcChatPrice()" checked style="accent-color:var(--teal);width:16px;height:16px;">
-              <div><div style="font-size:0.88rem;font-weight:600;color:var(--navy);" id="chat-basic-label">Chatbot Basic</div><div style="font-size:0.75rem;color:var(--text-light);">499 € + 49 €/M</div></div>
-            </label>
-            <label style="display:flex;align-items:center;gap:10px;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:14px 16px;cursor:pointer;">
-              <input type="radio" name="chat-type" value="premium" onchange="calcChatPrice()" style="accent-color:var(--teal);width:16px;height:16px;">
-              <div><div style="font-size:0.88rem;font-weight:600;color:var(--navy);" id="chat-premium-label">Chatbot Premium</div><div style="font-size:0.75rem;color:var(--text-light);">999 € + 99 €/M</div></div>
-            </label>
-            <label style="display:flex;align-items:center;gap:10px;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:14px 16px;cursor:pointer;">
-              <input type="radio" name="chat-type" value="auto-basic" onchange="calcChatPrice()" style="accent-color:var(--teal);width:16px;height:16px;">
-              <div><div style="font-size:0.88rem;font-weight:600;color:var(--navy);" id="auto-basic-label">Automatisierung Basic</div><div style="font-size:0.75rem;color:var(--text-light);">299 € einmalig</div></div>
-            </label>
-            <label style="display:flex;align-items:center;gap:10px;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:14px 16px;cursor:pointer;">
-              <input type="radio" name="chat-type" value="auto-pro" onchange="calcChatPrice()" style="accent-color:var(--teal);width:16px;height:16px;">
-              <div><div style="font-size:0.88rem;font-weight:600;color:var(--navy);" id="auto-pro-label">Automatisierung Pro</div><div style="font-size:0.75rem;color:var(--text-light);">599 € einmalig</div></div>
-            </label>
-          </div>
-          <div style="background:var(--navy);border-radius:12px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
-            <div><div style="font-size:0.75rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;" id="calc2-einmalig-label">Einmalig</div><div style="font-family:'Fraunces',serif;font-size:2.2rem;font-weight:700;color:#fff;letter-spacing:-1px;" id="calc2-einmalig">499 €</div></div>
-            <div id="calc2-monthly-wrap"><div style="font-size:0.75rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;" id="calc2-monatlich-label">Monatlich</div><div style="font-family:'Fraunces',serif;font-size:2.2rem;font-weight:700;color:var(--teal);letter-spacing:-1px;" id="calc2-monatlich">49 €</div></div>
-            <button onclick="showPage('kontakt')" style="background:var(--teal);color:#fff;border:none;border-radius:100px;padding:12px 24px;font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:600;cursor:pointer;" id="calc2-anfragen-btn">Anfragen →</button>
           </div>
         </div>
       </div>
@@ -986,17 +900,23 @@ footer{grid-template-columns:1fr 1fr;}
       <h2 class="section-title" data-i18n="ref_title">Projekte die <em>sprechen</em></h2>
       <p class="section-sub" data-i18n="ref_sub">Ein Blick auf das bisher Entstandene – mit dem Anspruch auf Qualität.</p>
       <div class="ref-grid">
-        <div class="ref-card reveal stagger-1">
-          <div class="ref-tag">✓ Kunde</div>
-          <div class="ref-title">Zertifiziertes Laufcoaching – Nina Rosemeier</div>
-          <div class="ref-desc">Vollständige Website für eine zertifizierte Laufcoach aus Flensburg. Inklusive Angebotsseite mit gestaffelten Paketen, Erfolgsberichten, FAQ und mobilem Design.</div>
-          <div class="ref-leistung">Website & Design · Flensburg</div>
-        </div>
-        <div class="ref-card reveal stagger-2">
-          <div class="ref-tag">⚡ Demo</div>
-          <div class="ref-title">Goldkruste Bäckerei</div>
-          <div class="ref-desc">Demo-Projekt: Lokale Bäckerei mit moderner Website, Online-Formular und integriertem Chatbot für häufige Kundenanfragen zu Öffnungszeiten und Produkten.</div>
-          <div class="ref-leistung">Website + Chatbot · Demo</div>
+        <div class="ref-card reveal stagger-1" style="padding:0;overflow:hidden;">
+          <div style="background:#e8eaed;padding:10px 12px 0;display:flex;align-items:center;gap:6px;">
+            <div style="display:flex;gap:5px;">
+              <div style="width:10px;height:10px;border-radius:50%;background:#ff5f57;"></div>
+              <div style="width:10px;height:10px;border-radius:50%;background:#febc2e;"></div>
+              <div style="width:10px;height:10px;border-radius:50%;background:#28c840;"></div>
+            </div>
+            <div style="flex:1;background:#fff;border-radius:4px;padding:4px 10px;font-size:0.72rem;color:#666;font-family:monospace;">zertifiziertes-laufcoaching.de</div>
+          </div>
+          <iframe src="https://www.zertifiziertes-laufcoaching.de" style="width:100%;height:220px;border:none;display:block;pointer-events:none;" scrolling="no" loading="lazy"></iframe>
+          <div style="padding:20px 24px 24px;">
+            <div class="ref-tag">✓ Kunde</div>
+            <div class="ref-title">Zertifiziertes Laufcoaching – Nina Rosemeier</div>
+            <div class="ref-desc">Vollständige Website für eine zertifizierte Laufcoach aus Flensburg. Inklusive Angebotsseite mit gestaffelten Paketen, Erfolgsberichten, FAQ und mobilem Design.</div>
+            <div class="ref-leistung">Website & Design · Flensburg</div>
+            <a href="https://www.zertifiziertes-laufcoaching.de" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:0.82rem;font-weight:600;color:var(--teal-dark);text-decoration:none;">Website besuchen →</a>
+          </div>
         </div>
         <div class="ref-card ref-card-wide reveal" style="background:var(--navy);">
           <div class="ref-tag" style="background:rgba(0,184,148,0.2);color:#00b894;">→ Dein Projekt</div>
@@ -1041,12 +961,6 @@ footer{grid-template-columns:1fr 1fr;}
               <option value="">– Bitte wählen –</option>
               <option value="Website Basic (699 € + 49 €/M)">Website Basic – 699 € + 49 €/M</option>
               <option value="Website Premium (1.499 € + 89 €/M)">Website Premium – 1.499 € + 89 €/M</option>
-              <option value="Website + Chatbot (2.199 € + 149 €/M)">Website + Chatbot – 2.199 € + 149 €/M</option>
-              <option value="Automatisierung Basic (ab 299 €)">Automatisierung Basic – ab 299 €</option>
-              <option value="Automatisierung Pro (ab 599 €)">Automatisierung Pro – ab 599 €</option>
-              <option value="Chatbot Basic (499 € + 49 €/M)">Chatbot Basic – 499 € + 49 €/M</option>
-              <option value="Chatbot Premium (999 € + 99 €/M)">Chatbot Premium – 999 € + 99 €/M</option>
-              <option value="KI-Beratung (150 €/h)">KI-Beratung – 150 €/h</option>
               <option value="Wartung Basis (49 €/M)">Wartung Basis – 49 €/M</option>
               <option value="Wartung Premium (99 €/M)">Wartung Premium – 99 €/M</option>
               <option value="Noch unsicher – Erstgespräch gewünscht">Noch unsicher – Erstgespräch gewünscht</option>
@@ -1146,7 +1060,6 @@ footer{grid-template-columns:1fr 1fr;}
       <div class="section-tag">Überzeugt?</div>
       <h2 class="cta-title">Einen solchen Chatbot <em>für dich?</em></h2>
       <p class="cta-sub">Ab 499 € einmalig – direkt auf deiner Website, angepasst auf dein Unternehmen.</p>
-      <button class="btn-white" onclick="anfragen('Chatbot Basic', '499 € einmalig + 49 €/Monat')">Chatbot anfragen →</button>
     </section>
   </div>
 </div>
@@ -1209,8 +1122,6 @@ footer{grid-template-columns:1fr 1fr;}
     <div class="footer-heading">Leistungen</div>
     <ul class="footer-links">
       <li><a onclick="showPage('leistungen')">Website & Design</a></li>
-      <li><a onclick="showPage('leistungen')">Automatisierung</a></li>
-      <li><a onclick="showPage('leistungen')">KI-Tools</a></li>
       <li><a onclick="showPage('leistungen')">Wartung & Support</a></li>
     </ul>
   </div>
@@ -1368,10 +1279,7 @@ const SYSTEM_PROMPT = 'Du bist der freundliche KI-Assistent von Norivo, einer KI
 'Website Basic: 699€ einmalig + 49€/Monat. ' +
 'Website Premium: 1.499€ einmalig + 89€/Monat. ' +
 'Website + Chatbot: 2.199€ einmalig + 149€/Monat. ' +
-'Chatbot Basic: 499€ einmalig + 49€/Monat. ' +
-'Chatbot Premium: 999€ einmalig + 99€/Monat. ' +
-'Automatisierung Basic: ab 299€. Automatisierung Pro: ab 599€. ' +
-'KI-Beratung: 150€/Stunde. Wartung Basis: 49€/Monat. Wartung Premium: 99€/Monat. ' +
+'Wartung Basis: 49€/Monat. Wartung Premium: 99€/Monat. ' +
 'Inhaber: Finn Rosemeier, Flensburg. Kontakt: contact@norivo.net. Antwortzeit: 24h. ' +
 'Wenn jemand ein Projekt anfragen oder ein Erstgespräch buchen möchte, empfiehl den Calendly-Link: https://calendly.com/rosemeierfinn/30min – dort kann man direkt einen kostenlosen 30-Minuten-Termin buchen. E-Mail: contact@norivo.net.';
 
@@ -1506,10 +1414,8 @@ const deToEn = [
   [/Von der ersten Zeile Code bis zum fertigen Automatisierungsprozess – wir begleiten dein Unternehmen digital\./g, 'From the first line of code to the finished automation – we support your business digitally.'],
   [/Professionelle Websites die Kunden überzeugen – schnell, modern und mobil optimiert\./g, 'Professional websites that win customers – fast, modern and mobile optimised.'],
   [/Wiederkehrende Aufgaben automatisieren – mehr Zeit für das Wesentliche\./g, 'Automate repetitive tasks – more time for what matters.'],
-  [/Chatbots, Content-Automatisierung und KI-Beratung für deinen Alltag\./g, 'Chatbots, content automation and AI consulting for your daily work.'],
   [/Damit deine Website immer läuft – Updates, Backups und schneller Support\./g, 'Keeping your website running – updates, backups and fast support.'],
   [/Automatisierung\</g, 'Automation<'],
-  [/KI-Tools/g, 'AI Tools'],
   [/Wartung &amp; Support/g, 'Maintenance &amp; Support'],
   [/ab 49 €\/Monat/g, 'from €49/month'],
   [/\>Alle Leistungen &amp; Preise →\</g, '>All services &amp; pricing →<'],
@@ -1581,7 +1487,6 @@ const deToEn = [
   [/\>Mehrsprachig möglich\</g, '>Multilingual possible<'],
   [/\>Analytics &amp; Auswertung\</g, '>Analytics &amp; reporting<'],
   [/\>Persönliches Onboarding\</g, '>Personal onboarding<'],
-  [/\>KI-Beratung\</g, '>AI consulting<'],
   [/\>Analyse deiner Prozesse\</g, '>Process analysis<'],
   [/\>Konkrete Handlungsempfehlungen\</g, '>Concrete recommendations<'],
   [/\>Tool-Empfehlungen\</g, '>Tool recommendations<'],
@@ -1618,8 +1523,6 @@ const deToEn = [
   [/Ein Blick auf das bisher Entstandene – mit dem Anspruch auf Qualität\./g, 'A look at what has been created so far – with a commitment to quality.'],
   [/Vollständige Website für eine zertifizierte Laufcoach aus Flensburg\. Inklusive Angebotsseite mit gestaffelten Paketen, Erfolgsberichten, FAQ und mobilem Design\./g, 'Complete website for a certified running coach from Flensburg. Including an offers page with tiered packages, success stories, FAQ and mobile design.'],
   [/\>Demo\</g, '>Demo<'],
-  [/Lokale Bäckerei mit moderner Website, Online-Formular und integriertem Chatbot für häufige Kundenanfragen zu Öffnungszeiten und Produkten\./g, 'Local bakery with modern website, online form and integrated chatbot for common customer queries about opening hours and products.'],
-  [/Website \+ Chatbot · Demo/g, 'Website + Chatbot · Demo'],
   [/Werde der nächste Referenzkunde/g, 'Become the next reference client'],
   [/Starte jetzt mit einem kostenlosen Erstgespräch und lass uns gemeinsam dein Projekt umsetzen\./g, 'Start now with a free initial consultation and let us implement your project together.'],
   [/\>Projekt anfragen →\</g, '>Request a project →<'],
@@ -1650,11 +1553,8 @@ const deToEn = [
   [/>Website Basic</g, '>Website Basic<'],
   [/>Website Premium</g, '>Website Premium<'],
   [/>Website \+ Chatbot</g, '>Website + Chatbot<'],
-  [/>Chatbot Basic</g, '>Chatbot Basic<'],
   [/>Chatbot Premium</g, '>Chatbot Premium<'],
-  [/>Automatisierung Basic</g, '>Automation Basic<'],
   [/>Automatisierung Pro</g, '>Automation Pro<'],
-  [/>KI-Beratung</g, '>AI Consulting<'],
   [/>Sonstiges</g, '>Other<'],
   // FAQ
   [/\>FAQ &amp; Live-Demo\</g, '>FAQ &amp; Live Demo<'],
@@ -1668,7 +1568,6 @@ const deToEn = [
   [/Kann ich die Website später erweitern\?/g, 'Can I expand the website later?'],
   [/Unsere Websites starten ab 699 € einmalig\. Das Basis-Paket \(bis 5 Seiten\) kostet 699 € \+ 49 €\/Monat Wartung\. Das Premium-Paket \(bis 10 Seiten, Blog, SEO\) kostet 1\.499 € \+ 89 €\/Monat\. Alle Preise sind transparent – keine versteckten Kosten\./g, 'Our websites start at €699 one-time. The Basic package (up to 5 pages) costs €699 + €49/month maintenance. The Premium package (up to 10 pages, blog, SEO) costs €1,499 + €89/month. All prices are transparent – no hidden costs.'],
   [/Eine einfache Website ist meist innerhalb von 1–2 Wochen fertig\. Komplexere Projekte mit Chatbot und Automatisierungen dauern 2–4 Wochen\. Ich halte dich immer auf dem Laufenden\./g, 'A simple website is usually ready within 1–2 weeks. More complex projects with chatbot and automations take 2–4 weeks. I\'ll always keep you updated.'],
-  [/Ein KI-Chatbot ist ein intelligenter Assistent auf deiner Website, der Kundenfragen automatisch beantwortet – rund um die Uhr, ohne dass du dabei sein musst\. Er kann Öffnungszeiten erklären, Anfragen entgegennehmen, Preise nennen und vieles mehr\./g, 'An AI chatbot is an intelligent assistant on your website that automatically answers customer questions – around the clock, without you having to be there. It can explain opening hours, take enquiries, quote prices and much more.'],
   [/Überhaupt nicht\. Du beschreibst mir was du brauchst, ich kümmere mich um alles Technische\. Nach dem Launch erkläre ich dir kurz wie du einfache Inhalte selbst ändern kannst – wenn du das möchtest\./g, 'Not at all. You describe what you need, I take care of everything technical. After launch, I\'ll briefly show you how to change simple content yourself – if you want.'],
   [/Das Basis-Paket \(49 €\/Monat\) enthält monatliche Updates, automatische Backups und Sicherheits-Monitoring\. Das Premium-Paket \(99 €\/Monat\) enthält zusätzlich kleine Inhaltsänderungen, Performance-Optimierung und Priorität-Support\./g, 'The Basic package (€49/month) includes monthly updates, automatic backups and security monitoring. The Premium package (€99/month) additionally includes minor content changes, performance optimisation and priority support.'],
   [/Ja, jederzeit\. Wir bauen von Anfang an auf einer flexiblen Basis, sodass später problemlos ein Chatbot, ein Shop oder weitere Seiten hinzugefügt werden können\./g, 'Yes, at any time. We build on a flexible foundation from the start, so a chatbot, shop or additional pages can easily be added later.'],
@@ -1740,7 +1639,6 @@ const deToEn = [
   [/\>Lead-Qualifizierung\</g, '>Lead qualification<'],
   [/\>Mehrsprachig\</g, '>Multilingual<'],
   [/\>Mehrsprachig möglich\</g, '>Multilingual possible<'],
-  // KI-Beratung features
   [/\>Persönliche KI-Strategie\</g, '>Personal AI strategy<'],
   [/\>Implementierungsplan\</g, '>Implementation plan<'],
   [/\>Schulung &amp; Einweisung\</g, '>Training &amp; onboarding<'],
@@ -1809,10 +1707,25 @@ function setLang(lang) {
   if (deBtn) { deBtn.style.background = lang === 'de' ? 'var(--teal-light)' : 'transparent'; deBtn.style.fontWeight = lang === 'de' ? '600' : '500'; }
   if (enBtn) { enBtn.style.background = lang === 'en' ? 'var(--teal-light)' : 'transparent'; enBtn.style.fontWeight = lang === 'en' ? '600' : '500'; }
 
+  // Update mobile language buttons
+  const deBtnM = document.getElementById('lang-de-m');
+  const enBtnM = document.getElementById('lang-en-m');
+  if (deBtnM) { deBtnM.style.background = lang === 'de' ? 'var(--teal-light)' : 'transparent'; deBtnM.style.fontWeight = lang === 'de' ? '600' : '500'; }
+  if (enBtnM) { enBtnM.style.background = lang === 'en' ? 'var(--teal-light)' : 'transparent'; enBtnM.style.fontWeight = lang === 'en' ? '600' : '500'; }
+
   document.documentElement.lang = lang;
 
-  // Re-init after innerHTML swap
+  // Re-apply dark mode icon state after body swap
   setTimeout(() => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const moon = document.getElementById('dark-icon-moon');
+    const sun = document.getElementById('dark-icon-sun');
+    const moonM = document.getElementById('dark-icon-moon-m');
+    const sunM = document.getElementById('dark-icon-sun-m');
+    if (moon) moon.style.display = isDark ? 'none' : 'block';
+    if (sun) sun.style.display = isDark ? 'block' : 'none';
+    if (moonM) moonM.style.display = isDark ? 'none' : 'block';
+    if (sunM) sunM.style.display = isDark ? 'block' : 'none';
     checkReveal();
     initReveal();
     document.querySelectorAll('.section-tag').forEach(el => el.classList.add('line-visible'));
